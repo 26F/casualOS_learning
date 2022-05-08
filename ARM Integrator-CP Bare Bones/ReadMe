@@ -1,0 +1,20 @@
+shell history commands used
+
+start.s
+
+arm-elf-as -o start.o start.s
+
+main.o
+
+arm-elf-gcc -Wall -Wextra -Werror -nostdlib -nostartfiles -ffreestanding -std=gnu99 -c main.c
+
+linking
+
+arm-elf-ld -T link.ld -o kernel start.o main.o
+
+qemu (running)
+
+qemu-system-arm -L . -m 128 -machine type=integratorcp -kernel kernel
+
+(press Ctrl Alt + 3)
+
